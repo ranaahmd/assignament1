@@ -1,0 +1,44 @@
+import re
+def names():
+    simple_string = """Amy is 5 years old, and her sister Mary is 2 years old. 
+    Ruth and Peter, their parents, have 3 kids."""
+    pattern = "[A-Z][a-z]*"
+    names= re.findall(pattern, simple_string)
+    return (names)
+
+
+;;;;;;;;;;;;; 
+.....b...
+import re
+def grades():
+    with open ("assets/grades.txt", "r") as file:
+        grades = file.read()
+
+  
+    pattern = "[\w ]*:\ B"
+    result= re.findall(pattern, grades)
+    return (result)
+
+........c..
+import re 
+def logs():
+    with open("assets/logdata.txt", "r") as file:
+        logdata = file.read()
+
+    # YOUR CODE HERE
+    #     raise NotImplementedError()
+    pattern = """
+    (?P<host>[\d]*.[\d]*.[\d]*.[\d]*)    
+    (\ -\ )  
+    (?P<user_name>[\w-]*) 
+    (\ \[) 
+    (?P<time>\w*/\w*/.*)
+    (\]\ \") 
+    (?P<request>.*)
+    (")
+    """
+    # YOUR CODE HERE
+    result = []
+    for item in re.finditer(pattern, logdata, re.VERBOSE):
+        result.append(item.groupdict())
+    return result
